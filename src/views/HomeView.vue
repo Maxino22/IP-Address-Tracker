@@ -48,6 +48,7 @@ onMounted(() => {
       "nqQecoOuuWfYjXKVGHXF",
       function (data) {
         usersIP.value = data.ipAddress;
+        console.log(usersIP.value);
       },
       function (errorCode, errorMessage) {
         console.log(errorCode, errorMessage);
