@@ -45,7 +45,7 @@ onMounted(() => {
         s.send(null);
     };
     VisitorAPI(
-      "nqQecoOuuWfYjXKVGHXF",
+      "m5TM22ZPltAM6aT7q6Qe",
       function (data) {
         usersIP.value = data.ipAddress;
         console.log(usersIP.value);
