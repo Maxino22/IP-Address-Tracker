@@ -32,13 +32,27 @@ onMounted(() => {
     .addTo(mymap);
   // getting & setting users ip
   function getUserIP() {
-    fetch("https://api.ipify.org/")
-      .then((res) => res.text())
-      .then((ip) => {
-        usersIP.value = ip;
-        console.log(usersIP.value);
-      })
-      .catch((err) => console.log(err));
+    var VisitorAPI = function (t, e, a) {
+      var s = new XMLHttpRequest();
+      (s.onreadystatechange = function () {
+        var t;
+        s.readyState === XMLHttpRequest.DONE &&
+          (200 === (t = JSON.parse(s.responseText)).status
+            ? e(t.data)
+            : a(t.status, t.result));
+      }),
+        s.open("GET", "https://api.visitorapi.com/api/?pid=" + t),
+        s.send(null);
+    };
+    VisitorAPI(
+      "nqQecoOuuWfYjXKVGHXF",
+      function (data) {
+        usersIP.value = data.ipAddress;
+      },
+      function (errorCode, errorMessage) {
+        console.log(errorCode, errorMessage);
+      }
+    );
   }
 
   getUserIP();
