@@ -63,6 +63,7 @@ async function getIPInfo() {
     const data = await axios.post("https://flask-web-ip.onrender.com/api", {
       ip_address: queryIP.value === "" ? usersIP.value : queryIP.value,
     });
+
     const result = data.data;
     IpInfo.value = {
       address: result.ip,
